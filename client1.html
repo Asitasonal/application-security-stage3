@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client 1</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-image: url(back.gif);
+        font-family: Arial, sans-serif;
+    }
+
+    #messages {
+        background-image: url(data:image/png;base64,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);
+        background-color: gray;
+        margin-bottom: auto;
+        padding: 10px;
+        overflow-y: auto; /* Make the message div scrollable */
+        max-height: calc(100vh - 90px);
+        height: 100vh;
+        flex: 1; /* Take up remaining space */
+        display: flex;
+        flex-direction: column-reverse; /* Change to reverse the order of messages */
+    }
+
+    .sent-message, .received-message {
+        max-width: 70%; /* Limit message width */
+        word-wrap: break-word; /* Break long words */
+    }
+
+    .sent-message {
+        background-color: rgb(105, 165, 105);
+        color: white;
+        padding: 5px;
+        margin-top: 5px; /* Changed to margin-top */
+        border-radius: 5px;
+        align-self: flex-end;
+    }
+
+    .received-message {
+        background-color: rgb(89, 167, 231);
+        color: white;
+        padding: 5px;
+        margin-top: 5px; /* Changed to margin-top */
+        border-radius: 5px;
+        align-self: flex-start;
+    }
+
+    .send {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-top: 1px solid rgb(67, 67, 67);
+    }
+
+    .send input[type="text"] {
+        flex: 1;
+        margin-right: 10px;
+        padding: 8px;
+        border-radius: 20px;
+        border: 2px solid #007bff;
+        outline: none;
+        font-size: 16px;
+    }
+
+    .send button {
+        padding: 8px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+    <div id="messages"></div>
+    <div class="send">
+        <input type="text" id="messageInput" placeholder="Type your message">
+        <button id="sendButton">Send</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.1.0/jsencrypt.min.js"></script>
+    <script>
+        const socket = new WebSocket('wss://pagebyrajucnode.onrender.com');
+
+
+
+
+        var publicKey = "-----BEGIN PUBLIC KEY-----\n" +
+        "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEFkVxNvBVrUwLdGTlpTYF7o0p/yctY9FGmaeATc/rvcmAhfN90lUkJnxwmost7F8tP1SRwhOU4FBFHpFest2mI0XSz57qoTRp6f0qj+R5mUqDrcrARGfWs3zaFiUt63EL47gj9QNUsmEGR6LZbbTagLbD2utIV6ThRa+gCVXNzwIDAQAB\n" +
+        "-----END PUBLIC KEY-----";
+    
+        var privateKey = "-----BEGIN PRIVATE KEY-----\n" +
+        "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMQWRXE28FWtTAt0ZOWlNgXujSn/Jy1j0UaZp4BNz+u9yYCF833SVSQmfHCaiy3sXy0/VJHCE5TgUEUekV6y3aYjRdLPnuqhNGnp/SqP5HmZSoOtysBEZ9azfNoWJS3rcQvjuCP1A1SyYQZHotlttNqAtsPa60hXpOFFr6AJVc3PAgMBAAECgYAIEcaPzyv6yqPrgMG6NZ9QhS2oAckR9B6joiUjgZBB6lCFin2nuuUoFLFgTOvXWvfbu9R2Hx+BK+4Bui1PUVsPras3sjlQp7iv0xuk8Pwdfa00XMF1zoS5cw1AOQxcoTBaRlhobN8+6VW27wfkqTm1cy8nyMlUQnyDju/s3iHz6QJBAPq69UQ14aH6UVRf1WYYk6Sjml20C5pAxbOeRFkFIljGhGNfmKL9aB8TTpcXrwYtBb06hpU5Tn76jn4sT5zZk7MCQQDINU6+GL57KQ2wJdLHKz98OiEI6lMWsOTJssz0N+aYviJABSGNeXZwgNqk+tI2U6fgYOfBLPz/CNwWD5/2Iv91AkEA3m1axf8ywjpJShuWOXNWDzlf6P6fSGFrwbOGmJ5YYP8DVRDqXLWHWAINtzY4e7cXH067M8hZ3YWzQTVYDyJpxwJAFGEQvdro8MJyCT8gYHOvh6anHDA1+vZQo5NWt3lFOMEJ3XhoPO1jN/p1xxtc8Hi9euKCVLCOpCszs+8tOjG/zQJBALWbM3hEKUTg1I49DDjn9iboqImAdI9HaD03oj+TBrc9nux3oWoN79mZ/CTqQii5Y9S2ycyQ+goTTOPoIFv7uv8=\n" +
+        "-----END PRIVATE KEY-----";
+
+        var crypt = new JSEncrypt();
+        crypt.setPublicKey(publicKey);
+        crypt.setPrivateKey(privateKey);
+
+        // Execute sendMessage function when Enter key is pressed in the input field
+        document.getElementById('messageInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default behavior (e.g., form submission)
+                sendMessage();
+            }
+        });
+
+        socket.onmessage = function(event) {
+            const receivedMessage = event.data;
+
+            var decrypted_message = crypt.decrypt(receivedMessage);
+            
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.innerHTML = `<h1 align="left" class="received-message">${decrypted_message}</h1>` + messagesContainer.innerHTML; // Add new message to the top
+            messagesContainer.scrollTop = 0; // Scroll to the top
+        };
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+
+            var encrypted_message = crypt.encrypt(message)
+
+            socket.send(encrypted_message);
+
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.innerHTML = `<h1 align="right" class="sent-message">${message}</h1>` + messagesContainer.innerHTML; // Add new message to the top
+            messagesContainer.scrollTop = 0; // Scroll to the top
+
+            messageInput.value = ''; // Clear input field
+        }
+
+        document.getElementById('sendButton').addEventListener('click', sendMessage); // Add click event listener to the Send button
+    </script>
+</body>
+</html>
